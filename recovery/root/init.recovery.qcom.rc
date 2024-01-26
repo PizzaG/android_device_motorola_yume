@@ -1,0 +1,69 @@
+#
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2019-Present A-Team Digital Solutions
+#
+
+import /init.recovery.qcom_decrypt.rc
+
+on early-init
+    start set_permissive
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    
+on property:init.svc.fastbootd=running
+    # Load prebuild kernel modules in fastboot mode
+    mount /vendor_dlkm
+    insmod /vendor_dlkm/lib/modules/ili9882_mmi.ko
+    insmod /vendor_dlkm/lib/modules/msm_drm.ko
+    insmod /vendor_dlkm/lib/modules/mmi_annotate.ko
+    insmod /vendor_dlkm/lib/modules/mmi_info.ko
+    insmod /vendor_dlkm/lib/modules/mmi_relay.ko
+    insmod /vendor_dlkm/lib/modules/mmi_charger.ko
+    insmod /vendor_dlkm/lib/modules/mmi_sys_temp.ko
+    insmod /vendor_dlkm/lib/modules/moto_f_mass_storage.ko
+    insmod /vendor_dlkm/lib/modules/sensors_class.ko
+    insmod /vendor_dlkm/lib/modules/touchscreen_mmi.ko
+    insmod /vendor_dlkm/lib/modules/stmicro_mmi.ko
+    insmod /vendor_dlkm/lib/modules/goodix_brl_mmi.ko
+    insmod /vendor_dlkm/lib/modules/sx937x_sar.ko
+    insmod /vendor_dlkm/lib/modules/bm_adsp_ulog.ko
+    insmod /vendor_dlkm/lib/modules/qti_glink_charger.ko
+    insmod /vendor_dlkm/lib/modules/qpnp_adaptive_charge.ko
+    insmod /vendor_dlkm/lib/modules/q6_pdr_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/q6_notifier_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/snd_event_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/gpr_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/spf_core_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/adsp_loader_dlkm.ko
+    setprop twrp.modules.loaded true
+
+on post-fs && property:init.svc.fastbootd=stopped
+    # Trigger loading kernel modules in normal mode
+    setprop twrp.modules.loaded true
+
+on property:twrp.modules.loaded=true
+    # Load kernel modules and ADSP firmware for PMIC
+    wait /sys/kernel/boot_adsp/boot
+    start runatboot
+    wait /sys/class/power_supply/battery
+
+on post-fs
+    start boot-hal-1-2
+
+on boot
+    start health-hal-2-1
+
+service set_permissive /system/bin/set_permissive.sh
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
+
+service runatboot /system/bin/runatboot.sh
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
