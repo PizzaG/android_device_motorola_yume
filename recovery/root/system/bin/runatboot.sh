@@ -2,8 +2,9 @@
 
 #
 # Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2024 SebaUbuntu's TWRP Device Tree Generator
 # Copyright (C) 2019-Present A-Team Digital Solutions
+# Copyright (C) 2024 sosRR
 #
 
 mount /vendor_dlkm
@@ -22,6 +23,7 @@ fi
 is_fastboot=$(getprop init.svc.fastbootd)
 if [ "$is_fastboot" != "running" ]; then
         mount /vendor_dlkm
+        insmod /vendor_dlkm/lib/modules/leds_aw99703.ko
         insmod /vendor_dlkm/lib/modules/ili9882_mmi.ko
         insmod /vendor_dlkm/lib/modules/msm_drm.ko
         insmod /vendor_dlkm/lib/modules/mmi_annotate.ko

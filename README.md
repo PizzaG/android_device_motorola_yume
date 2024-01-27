@@ -1,6 +1,6 @@
 # Building
 
-setup build environment for Recovery
+setup build environment 
 add device trees 
 
 

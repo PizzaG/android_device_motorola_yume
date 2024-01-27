@@ -1,7 +1,8 @@
 #
 # Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2024 SebaUbuntu's TWRP Device Tree Generator
 # Copyright (C) 2019-Present A-Team Digital Solutions
+# Copyright (C) 2024 sosRR
 #
 
 # Inherit from those products. Most specific first.
@@ -20,7 +21,7 @@ $(call inherit-product, device/motorola/yume/device.mk)
 
 PRODUCT_DEVICE := yume
 PRODUCT_NAME := twrp_yume
-PRODUCT_BRAND := Moto
+PRODUCT_BRAND := Moto_G
 PRODUCT_MODEL := XT2315
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_RELEASE_NAME := Moto G Stylus 5G 2023

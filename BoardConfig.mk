@@ -1,7 +1,8 @@
 #
 # Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2024 SebaUbuntu's TWRP Device Tree Generator
 # Copyright (C) 2019-Present A-Team Digital Solutions
+# Copyright (C) 2024 sosRR
 #
 
 DEVICE_PATH := device/motorola/yume
@@ -169,9 +170,9 @@ TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_NTFS_3G := true
 TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_BRIGHTNESS_PATH := /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness
-TW_MAX_BRIGHTNESS := 255
-TW_DEFAULT_BRIGHTNESS := 150
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/aw99703-bl/brightness"
+TW_MAX_BRIGHTNESS := 2047
+TW_DEFAULT_BRIGHTNESS := 541
 TW_FRAMERATE := 60
 TW_HAS_EDL_MODE := true
 TW_INCLUDE_FASTBOOTD := true
@@ -182,7 +183,6 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 TW_EXCLUDE_APEX := true
 TW_FORCE_KEYMASTER_VER := false
-#TW_NO_SCREEN_TIMEOUT := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_PYTHON := true
