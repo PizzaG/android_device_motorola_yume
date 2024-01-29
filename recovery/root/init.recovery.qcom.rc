@@ -19,7 +19,6 @@ on property:init.svc.fastbootd=running
     mount /vendor_dlkm
     insmod /vendor_dlkm/lib/modules/leds_aw99703.ko
     insmod /vendor_dlkm/lib/modules/leds-qpnp-flash-v2.ko
-    insmod /vendor_dlkm/lib/modules/schgm-flash.ko
     insmod /vendor_dlkm/lib/modules/ili9882_mmi.ko
     insmod /vendor_dlkm/lib/modules/msm_drm.ko
     insmod /vendor_dlkm/lib/modules/mmi_annotate.ko

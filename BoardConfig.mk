@@ -141,11 +141,6 @@ TARGET_USES_MKE2FS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# PitchBlack Build Configuration
-PB_TORCH_PATH := "/sys/class/leds/led:switch_2/brightness"
-PB_DISABLE_DEFAULT_TREBLE_COMP := false
-PB_TORCH_MAX_BRIGHTNESS := 255
-
 # Platform
 TARGET_BOARD_PLATFORM := parrot
 QCOM_BOARD_PLATFORMS += parrot
@@ -160,10 +155,28 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
+# SkyHawk Build Configuration
+SHRP_PATH := device/motorola/yume
+SHRP_MAINTAINER := PizzaG
+SHRP_DEVICE_CODE := XT2315
+SHRP_REC_TYPE := Treble
+SHRP_DEVICE_TYPE := A/B
+SHRP_NOTCH := true
+SHRP_DARK := true
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usbotg
+SHRP_HAS_RECOVERY_PARTITION := true
+SHRP_REC := /dev/block/bootdevice/by-name/recovery
+SHRP_AB := true
+SHRP_NO_SAR_AUTOMOUNT := false
+SHRP_FLASH := 1
+SHRP_FLASH_MAX_BRIGHTNESS := 255
+
 # TWRP Build Configuration
-TW_MAINTAINER := PizzaG
 TW_DEVICE_VERSION := -v0.02
-RECOVERY_VARIANT := PBRP_12.1
+RECOVERY_VARIANT := SHRP_12.1
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
@@ -192,7 +205,6 @@ TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_PYTHON := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 TW_NO_USB_STORAGE := false
-TW_NO_SCREEN_BLANK := true
 
 # TWRP Crypto Configuration
 TW_INCLUDE_CRYPTO := true
