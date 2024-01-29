@@ -161,7 +161,6 @@ SHRP_MAINTAINER := PizzaG
 SHRP_DEVICE_CODE := XT2315
 SHRP_REC_TYPE := Treble
 SHRP_DEVICE_TYPE := A/B
-SHRP_NOTCH := true
 SHRP_DARK := true
 SHRP_EDL_MODE := 1
 SHRP_EXTERNAL := /external_sd
@@ -205,6 +204,8 @@ TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_PYTHON := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 TW_NO_USB_STORAGE := false
+TW_Y_OFFSET := 120
+TW_H_OFFSET := -120
 
 # TWRP Crypto Configuration
 TW_INCLUDE_CRYPTO := true
