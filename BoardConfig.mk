@@ -142,7 +142,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # PitchBlack Build Configuration
-PB_TORCH_PATH := "/sys/class/leds/led:switch_2"
+PB_TORCH_PATH := "/sys/class/leds/led:switch_2/brightness"
 PB_DISABLE_DEFAULT_TREBLE_COMP := false
 PB_TORCH_MAX_BRIGHTNESS := 255
 
