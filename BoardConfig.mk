@@ -56,7 +56,7 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 RELAX_USES_LIBRARY_CHECK := true
-TARGET_DEVICE_ALT += genevn_g genevn yume
+TARGET_DEVICE_ALT += genevn_g genevn yume XT2315
 
 # Display
 TARGET_SCREEN_DENSITY := 400
@@ -141,6 +141,11 @@ TARGET_USES_MKE2FS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
+# PitchBlack Build Configuration
+PB_TORCH_PATH := "/sys/class/leds/led:switch_2"
+PB_DISABLE_DEFAULT_TREBLE_COMP := false
+PB_TORCH_MAX_BRIGHTNESS := 255
+
 # Platform
 TARGET_BOARD_PLATFORM := parrot
 QCOM_BOARD_PLATFORMS += parrot
@@ -158,7 +163,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 # TWRP Build Configuration
 TW_MAINTAINER := PizzaG
 TW_DEVICE_VERSION := -v0.02
-RECOVERY_VARIANT := TWRP_12.1
+RECOVERY_VARIANT := PBRP_12.1
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
@@ -187,8 +192,7 @@ TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_PYTHON := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 TW_NO_USB_STORAGE := false
-TW_Y_OFFSET := 120
-TW_H_OFFSET := -120
+TW_NO_SCREEN_BLANK := true
 
 # TWRP Crypto Configuration
 TW_INCLUDE_CRYPTO := true
